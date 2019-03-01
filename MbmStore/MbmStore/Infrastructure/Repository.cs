@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using MbmStore.Models;
 
 namespace MbmStore.Infrastructure
 {
@@ -9,7 +10,7 @@ namespace MbmStore.Infrastructure
     {
         public static List<Product> Products = new List<Product>();
         public static List<Invoice> Invoices = new List<Invoice>();
-        public static List<Customers> Customers = new List<Customers>();
+        public static List<Customer> Customers = new List<Customer>();
 
         static Repository() { }
 
