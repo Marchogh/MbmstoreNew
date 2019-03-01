@@ -19,7 +19,22 @@ namespace MbmStore.Models
         public DateTime OrderDate { get; set; }
         public decimal TotalPrice { get; }
         public Customer Customer { get; set; }
-        
+
+        public Invoice(int invoiceId, DateTime orderDate, decimal totalPrice, Customer customer)
+        {
+            InvoiceId = invoiceId;
+            OrderDate = orderDate;
+            TotalPrice = totalPrice;
+            Customer = customer;
+        }
+
+        public void AddOrderItem(Product product, int quantity)
+        {
+            OrderItem item = new OrderItem(product, quantity);
+
+            orderItems.Add(item);
+        }
+
     }
 
 }
