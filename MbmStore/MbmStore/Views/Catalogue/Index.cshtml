@@ -1,0 +1,84 @@
+﻿@using MbmStore.Models;
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<h2>Book</h2>
+@helper RenderBook(Book book)
+{
+
+
+    <ul>
+        <li>
+            @book.Title
+        </li>
+        <li>
+            @book.Author
+        </li>
+        <li>
+            @book.Publisher
+        </li>
+        <li>
+            @book.Published
+        </li>
+        <li>
+            @book.ISBN
+        </li>
+        <li>
+            @book.Price $
+        </li>
+
+    </ul>
+    <img src="/content/images/@book.ImageUrl" alt="" width="220" height="220" />
+
+}
+
+@RenderBook(ViewBag.Denlever)
+
+
+<h2>CD</h2>
+@helper RenderMusicCD(MusicCD musicCD)
+{
+
+    <ul>
+        <li>
+            @musicCD.Title
+        </li>
+        <li>
+            @musicCD.Artist
+        </li>
+        <li>
+            @musicCD.Label
+        </li>
+        <li>
+            @musicCD.Released
+        </li>
+        <li>
+            @musicCD.Price $
+        </li>
+
+    </ul>
+    <img src="/content/images/@musicCD.ImageUrl" alt="" />
+
+    <h2>Tracks</h2>
+    <ul>
+        @foreach (Track track in @musicCD.Tracks)
+        {
+            <li>
+                @track.Title (@track.Composer)
+                @track.Length.Minutes:@track.Length.Seconds
+            </li>
+        }
+    </ul>
+    <p>Total Time: @musicCD.GetPlayingTime()</p>
+}
+@RenderMusicCD(ViewBag.Queen)
+
+
+
+
+
+
+

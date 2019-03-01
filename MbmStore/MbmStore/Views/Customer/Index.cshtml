@@ -1,0 +1,35 @@
+﻿@using MbmStore.Models;
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<h2>Customer</h2>
+@helper RenderCustomer(Customer customer)
+{
+
+ 
+<ul>
+    <li>
+        @customer.Firstname @customer.Lastname is @customer.Age old.
+    </li>
+    <li>
+        @String.Join(", ", customer.PhoneNumbers)
+    </li>
+    <li>
+        @customer.Address
+    </li>
+    <li>
+        @customer.Zip
+    </li>
+    <li>
+    @customer.City
+    </li>
+   
+</ul>
+}
+
+@RenderCustomer(ViewBag.Jens)
+@RenderCustomer(ViewBag.Morten)
+@RenderCustomer(ViewBag.Peter)
