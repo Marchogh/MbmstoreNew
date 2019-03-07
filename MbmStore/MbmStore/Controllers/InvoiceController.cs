@@ -8,18 +8,11 @@ using MbmStore.Models;
 
 namespace MbmStore.Controllers
 {
-    public class MovieController : Controller
+    public class InvoiceController : Controller
     {
-        // GET: Movie
+        // GET: Invoice
         public ActionResult Index()
         {
-
-            IList<Movie> movies = new List<Movie>();
-            movies = Repository.Products.OfType<Movie>().ToList();
-            ViewBag.Movies = movies;
-
-            ViewBag.Products = Repository.Products;
-
 
             return View();
         }
