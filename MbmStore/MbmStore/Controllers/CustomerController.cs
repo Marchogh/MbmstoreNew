@@ -14,14 +14,13 @@ namespace MbmStore.Controllers
         public ActionResult Index()
         {
 
-            List<Customer> Customers = new List<Customer>();
-            Customers = Repository.Customers;
+            List<Customer> customers = new List<Customer>();
+            customers = Repository.Customers;
 
-            ViewBag.Customer = Customers;
-
-           
+            ViewBag.Customers = customers;
 
             return View();
         }
     }
 }
+

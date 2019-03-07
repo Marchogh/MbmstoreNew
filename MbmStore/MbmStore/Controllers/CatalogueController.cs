@@ -14,10 +14,9 @@ namespace MbmStore.Controllers
         public ActionResult Index()
         {
 
-         IList<Book> books = new List<Book>();
+         List<Book> books = new List<Book>();
          books = Repository.Products.OfType<Book>().ToList();
-         ViewBag.Books = books;
-
+         
          ViewBag.Products = Repository.Products;
 
 

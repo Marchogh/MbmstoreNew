@@ -43,16 +43,18 @@ namespace MbmStore.Infrastructure
 
 
             // Customer 
-            Customer c1 = new Customer("Jens", "Jensen", "Sønderhøj 30", "8230", "Viby");
-            Customer c2 = new Customer("Morten", "Mortensen", "Mønderhøj 30", "8230", "Viby");
-            Customer c3 = new Customer("Peter", "Petersen", "Pønderhøj 30", "8230", "Viby");
+            Customer c1 = new Customer("Jens", "Jensen", "Sønderhøj 30", "8230", "Åbyhøj");
+            Customer c2 = new Customer("Morten", "Mortensen", "Mønderhøj 30", "8260", "Viby");
+            Customer c3 = new Customer("Peter", "Petersen", "Pønderhøj 30", "8000", "Aarhus");
             c1.addPhone("5555555");
-            c1.addPhone("2323232");
+            c2.addPhone("2323232");
+            c3.addPhone("654245245");
             c1.BirthDate = new DateTime(1994, 2, 21);
             c2.BirthDate = new DateTime(1991, 1, 21);
-            
-            
-
+            c3.BirthDate = new DateTime(1994, 4, 18);
+            Customers.Add(c1);
+            Customers.Add(c2);
+            Customers.Add(c3);
 
         }
 

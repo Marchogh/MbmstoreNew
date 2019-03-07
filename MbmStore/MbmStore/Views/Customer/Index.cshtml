@@ -5,31 +5,20 @@
 
 
 
-<h2>Customer</h2>
-@helper RenderCustomer(Customer customer)
+<h2>Customers</h2>
+@foreach (Customer customer in ViewBag.Customers)
 {
 
- 
-<ul>
-    <li>
-        @customer.Firstname @customer.Lastname is @customer.Age old.
-    </li>
-    <li>
-        @String.Join(", ", customer.PhoneNumbers)
-    </li>
-    <li>
-        @customer.Address
-    </li>
-    <li>
-        @customer.Zip
-    </li>
-    <li>
-    @customer.City
-    </li>
-   
-</ul>
-}
 
-@RenderCustomer(ViewBag.Jens)
-@RenderCustomer(ViewBag.Morten)
-@RenderCustomer(ViewBag.Peter)
+<div class="card customer">
+    <div class="card-body">
+        <p><span class="font-weight-bold">Name:</span> @customer.Firstname @customer.Lastname</p>
+        <p><span class="font-weight-bold">Age:</span> @customer.Age</p>
+        <p><span class="font-weight-bold">Number:</span> @String.Join(", ", customer.PhoneNumbers)</p>
+        <p><span class="font-weight-bold">Adress:</span> @customer.Address, @customer.Zip, @customer.City </p>
+    </div>
+</div>
+    
+    }
+
+
