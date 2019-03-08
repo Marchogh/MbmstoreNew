@@ -43,9 +43,9 @@ namespace MbmStore.Infrastructure
 
 
             // Customer 
-            Customer c1 = new Customer("Jens", "Jensen", "Sønderhøj 30", "8230", "Åbyhøj");
-            Customer c2 = new Customer("Morten", "Mortensen", "Mønderhøj 30", "8260", "Viby");
-            Customer c3 = new Customer("Peter", "Petersen", "Pønderhøj 30", "8000", "Aarhus");
+            Customer c1 = new Customer("Jens", "Jensen", "Sønderhøj 30", "8230", "Åbyhøj", 1);
+            Customer c2 = new Customer("Morten", "Mortensen", "Mønderhøj 30", "8260", "Viby", 2);
+            Customer c3 = new Customer("Peter", "Petersen", "Pønderhøj 30", "8000", "Aarhus", 3);
             c1.addPhone("5555555");
             c2.addPhone("2323232");
             c3.addPhone("654245245");
@@ -55,6 +55,22 @@ namespace MbmStore.Infrastructure
             Customers.Add(c1);
             Customers.Add(c2);
             Customers.Add(c3);
+
+            // ORDER ITEMS
+            
+            Invoice i1 = new Invoice(488, new DateTime(2017, 6, 7), c1);
+            Invoice i2 = new Invoice(1163, new DateTime(2017, 6, 11), c2);
+            Invoices.Add(i1);
+            Invoices.Add(i2);
+
+            OrderItem oi1 = new OrderItem(cd1, 63);
+            i1.AddOrderItem(cd1, 3);
+            OrderItem oi2 = new OrderItem(m1, 74);
+            i1.AddOrderItem(m1, 4);
+            OrderItem oi3 = new OrderItem(b1, 101);
+            i2.AddOrderItem(b1, 5);
+            OrderItem oi4 = new OrderItem(b2, 105);
+            i2.AddOrderItem(b2, 6);
 
         }
 

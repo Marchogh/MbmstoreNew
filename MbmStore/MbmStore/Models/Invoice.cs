@@ -7,7 +7,6 @@ namespace MbmStore.Models
 {
     public class Invoice
     {
-        public decimal totalPrice { get; }
         private List<OrderItem> orderItems = new List<OrderItem>();
 
         public List<OrderItem> OrderItems
@@ -20,11 +19,10 @@ namespace MbmStore.Models
         public decimal TotalPrice { get; }
         public Customer Customer { get; set; }
 
-        public Invoice(int invoiceId, DateTime orderDate, decimal totalPrice, Customer customer)
+        public Invoice(int invoiceId, DateTime orderDate, Customer customer)
         {
             InvoiceId = invoiceId;
             OrderDate = orderDate;
-            TotalPrice = totalPrice;
             Customer = customer;
         }
 

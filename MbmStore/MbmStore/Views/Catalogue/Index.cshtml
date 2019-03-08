@@ -1,9 +1,8 @@
 ﻿@using MbmStore.Models;
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Catalogue";
 }
-
 
 
 <h2>Books</h2>
@@ -62,9 +61,9 @@
         {
             <ul>
                 @track.Title (@track.Composer)    @track.Length.Minutes:@track.Length.Seconds
-                <p>Total Playing Time: @musicCD.GetPlayingTime()</p>
             </ul>
         }
+        <p>Total Playing Time: @musicCD.GetPlayingTime()</p>
     }
 }
 

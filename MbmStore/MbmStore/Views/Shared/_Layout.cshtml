@@ -9,17 +9,24 @@
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-
-                @Html.ActionLink("Back to homepage", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav"></ul>
-            </div>
+    
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <div class="navbar-header">
+            @Html.ActionLink("Back to homepage", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         </div>
-    </div>
+        <ul class="navbar-nav">
+            <li class="nav-item px-2">
+                @Html.ActionLink("Customer", "Index", "Customer")
+            </li>
+            <li class="nav-item px-2">
+                @Html.ActionLink("Catalogue", "Index", "Catalogue")
+            </li>
+            <li class="nav-item px-2">
+                @Html.ActionLink("Invoice", "Index", "Invoice")
+            </li>
+        </ul>
+    </nav>
+
 
     <div class="container body-content">
         @RenderBody()

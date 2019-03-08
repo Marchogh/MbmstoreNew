@@ -17,6 +17,7 @@ namespace MbmStore.Models
         public string Zip { get; set; }
         public string City { get; set; }
         public int age { get; set; }
+        public int CustomerId { get; set; }
 
         List<string> phoneNumbers = new List<string>();
         private DateTime birthDate;
@@ -62,13 +63,14 @@ namespace MbmStore.Models
 
       
         // Constructor 
-        public Customer(string firstname, string lastname, string address, string zip, string city)
+        public Customer(string firstname, string lastname, string address, string zip, string city, int customerid)
         {
             Firstname = firstname;
             Lastname = lastname;
             Address = address;
             Zip = zip;
             City = city;
+            CustomerId = customerid;
         }
 
         // Method 
