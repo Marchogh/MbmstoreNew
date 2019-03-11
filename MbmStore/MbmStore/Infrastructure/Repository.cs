@@ -17,7 +17,7 @@ namespace MbmStore.Infrastructure
 
             // Books
             Book b1 = new Book("Den, der lever stille", "Leonora Christina Skov", "Saxo", 2018, "9788740049428", 8, "denlever.png");
-            Book b2 = new Book("Book2", "Christina Skov", "Saxi", 2007, "9788740049428", 5, "denlever.png");
+            Book b2 = new Book("Solo", "Jesper Stein", "JP/Politikens Forlag", 2018, "9788740053050", 5, "solo.jpg");
             Products.Add(b1);
             Products.Add(b2);
 
@@ -35,8 +35,8 @@ namespace MbmStore.Infrastructure
 
             // Movies 
             Movie m1 = new Movie("Jungle Book", 160.50m, "junglebook.jpg", "Lars");
-            Movie m2 = new Movie("Lego Movie 2", 150.10m, "junglebook.jpg", "Mads");
-            Movie m3 = new Movie("Upside", 155.10m, "junglebook.jpg", "Jens");
+            Movie m2 = new Movie("Gladiator", 155m, "gladiator.jpg", "Ridley Scott");
+            Movie m3 = new Movie("Forrest Gump", 142m, "forrest-gump.jpg", "Jens");
             Products.Add(m1);
             Products.Add(m2);
             Products.Add(m3);

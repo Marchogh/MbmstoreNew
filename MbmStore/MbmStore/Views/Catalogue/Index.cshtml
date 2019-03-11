@@ -28,47 +28,62 @@
     </div>
 </div>
 
-<h2>The Movies</h2>
-@foreach (Product product in ViewBag.Products)
-{
-    if (product is Movie)
-    {
-        Movie movie = (Movie)product;
-        <div>
-            <strong>Title:</strong> @movie.Title<br />
-            Director: @movie.Director<br>
-            Price: @String.Format("{0:0.00}", movie.Price) <br /><br />
-            <img src="/Content/Images/@movie.ImageUrl" alt="@movie.Title" />
-        </div>
-    }
-}
+<h2>Movies</h2>
+<div class="container">
+    <div class="row">
+        @foreach (Product product in ViewBag.Products)
+        {
+            if (product is Movie)
+            {
+                Movie movie = (Movie)product;
+                <div class="card product" style="width: 18rem;">
+                    <img src="/Content/Images/@movie.ImageUrl" alt="@movie.Title" />
+                    <div class="card-body">
+                        <strong>Title:</strong> @movie.Title<br />
+                        Director: @movie.Director<br>
+                        Price: @String.Format("{0:0.00}", movie.Price) <br /><br />
+                        <a href="#" class="btn btn-primary">Buy here!</a>
+                    </div>
+                </div>
+            }
+        }
 
+    </div>
+</div>
 
 <h2>The CDs</h2>
-@foreach (Product product in ViewBag.Products)
-{
-    if (product is MusicCD)
-    {
-        MusicCD musicCD = (MusicCD)product;
-        <div>
-            <strong>Title:</strong> @musicCD.Title<br />
-            Director: @musicCD.Artist<br>
-            Price: @String.Format("{0:0.00}", musicCD.Price) <br /><br />
-            <img src="/Content/Images/@musicCD.ImageUrl" alt="@musicCD.Title" />
-        </div>
-        foreach (Track track in musicCD.Tracks)
-
+<div class="container">
+    <div class="row">
+        @foreach (Product product in ViewBag.Products)
         {
-            <ul>
-                @track.Title (@track.Composer)    @track.Length.Minutes:@track.Length.Seconds
-            </ul>
-        }
-        <p>Total Playing Time: @musicCD.GetPlayingTime()</p>
-    }
-}
+            if (product is MusicCD)
+            {
+                MusicCD musicCD = (MusicCD)product;
+        <div class="card product" style="width: 18rem;">
+            <img src="/Content/Images/@musicCD.ImageUrl" alt="@musicCD.Title" />
+            <div class="card-body">
+                <strong>Title:</strong> @musicCD.Title<br />
+                <strong>Director:</strong> @musicCD.Artist<br>
+                <strong>Price:</strong> @String.Format("{0:0.00}", musicCD.Price) <br /><br />
 
 
+                @foreach (Track track in musicCD.Tracks)
 
+                {
+
+                    <ul>
+                        <li> @track.Title (@track.Composer)    @track.Length.Minutes:@track.Length.Seconds </li>
+                    </ul>
+                }
+                <p><strong>Total Playing Time:</strong> @musicCD.GetPlayingTime()</p>
+            </div>
+        </div>
+            }
+            }
+
+
+        </div>
+</div>
 
 
 
