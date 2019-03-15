@@ -12,36 +12,37 @@ namespace MbmStore.Controllers
     public class CartController : Controller
     {
         // GET: Cart
-        public RedirectToRouteResult AddToCart(int productId, string returnUrl)
+        public ViewResult Index(Cart cart, string returnUrl)
+        {
+            return View(new CartIndexViewModel
+            {
+                Cart = cart,
+                ReturnUrl = returnUrl
+            });
+        }
+        public RedirectToRouteResult AddToCart(Cart cart, int productId, string returnUrl)
         {
             Product product = Repository.Products.FirstOrDefault(p => p.ProductId ==
            productId);
             if (product != null)
             {
-                GetCart().AddItem(product, 1); //add one quantity of this product
+                cart.AddItem(product, 1);
             }
             return RedirectToAction("Index", new { controller = returnUrl.Substring(1) });
         }
-        public RedirectToRouteResult RemoveFromCart(int productId, string returnUrl)
+
+        public RedirectToRouteResult RemoveFromCart(Cart cart, int productId, string
+       returnUrl)
         {
             Product product = Repository.Products
             .FirstOrDefault(p => p.ProductId == productId);
             if (product != null)
             {
-                GetCart().RemoveItem(product);
+                cart.RemoveItem(product);
             }
-            return RedirectToAction("Index", new { returnUrl });
+            return RedirectToAction("Index", new { controller = "Cart" });
         }
-        private Cart GetCart()
-        {
-            Cart cart = (Cart)Session["Cart"];
-            if (cart == null)
-            {
-                cart = new Cart();
-                Session["Cart"] = cart;
-            }
-            return cart;
-        }
-
     }
 }
+
+

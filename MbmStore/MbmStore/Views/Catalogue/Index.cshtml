@@ -28,6 +28,7 @@
 }
 
 
+
 @helper RenderMovie(Movie movie)
 {
     <div class="col col-lg-6">
@@ -38,7 +39,12 @@
                 <strong>Title:</strong> @movie.Title<br />
                 Director: @movie.Director<br>
                 Price: @String.Format("{0:0.00}", movie.Price) <br /><br />
-                <a href="#" class="btn btn-primary">Buy here!</a>
+                @using (Html.BeginForm("AddToCart", "Cart"))
+                {
+                    @Html.Hidden("ProductId", movie.ProductId)
+                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                    <input type="submit" class="btn btn-primary" value="Add to cart" />
+                }
             </div>
         </div>
     </div>
@@ -67,6 +73,12 @@
                     </ul>
                 }
                 <p><strong>Total Playing Time:</strong> @musicCD.GetPlayingTime()</p>
+                @using (Html.BeginForm("AddToCart", "Cart"))
+                {
+                    @Html.Hidden("ProductId", musicCD.ProductId)
+                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                    <input type="submit" class="btn btn-primary" value="Add to cart" />
+                }
             </div>
         </div>
 
@@ -79,8 +91,8 @@
     @foreach (Book book in Model.OfType<Book>().ToList())
     {
         @RenderBook(book);
-
     }
+
 </div>
 
 <h2>Movies</h2>

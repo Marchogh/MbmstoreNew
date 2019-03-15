@@ -23,4 +23,11 @@ textarea {
     max-width: 280px;
 }
 
+.row.panel {
+    margin: 25px;
+}
+
+#categories {
+    margin: 25px;
+}
 

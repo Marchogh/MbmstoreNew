@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,13 +16,13 @@ namespace MbmStore.Infrastructure
 
 
             // Books
-            Book b1 = new Book("Den, der lever stille", "Leonora Christina Skov", "Saxo", 2018, "9788740049428", 8, "denlever.png");
-            Book b2 = new Book("Solo", "Jesper Stein", "JP/Politikens Forlag", 2018, "9788740053050", 5, "solo.jpg");
+            Book b1 = new Book("Den, der lever stille", "Leonora Christina Skov", "Saxo", 2018, "9788740049428", 8, "denlever.png", 1);
+            Book b2 = new Book("Solo", "Jesper Stein", "JP/Politikens Forlag", 2018, "9788740053050", 5, "solo.jpg", 2);
             Products.Add(b1);
             Products.Add(b2);
 
             // Music CD
-            MusicCD cd1 = new MusicCD("A Night at the Opera", "Queen", "EMI", 1975, 10, "Queen_A_Night.png");
+            MusicCD cd1 = new MusicCD("A Night at the Opera", "Queen", "EMI", 1975, 10, "Queen_A_Night.png", 3);
             Track t1 = new Track("Death On Two Legs (Dedicated to...", "Queen", new TimeSpan(0, 2, 55));
             Track t2 = new Track("Lazing On A Sunday Afternoon", "Queen", new TimeSpan(0, 1, 45));
             Track t3 = new Track("I'm In Love With My Car", "Queen", new TimeSpan(0, 3, 35));
@@ -34,13 +34,12 @@ namespace MbmStore.Infrastructure
             Products.Add(cd1);
 
             // Movies 
-            Movie m1 = new Movie("Jungle Book", 160.50m, "junglebook.jpg", "Lars");
-            Movie m2 = new Movie("Gladiator", 155m, "gladiator.jpg", "Ridley Scott");
-            Movie m3 = new Movie("Forrest Gump", 142m, "forrest-gump.jpg", "Jens");
+            Movie m1 = new Movie("Jungle Book", 160.50m, "junglebook.jpg", "Lars", 4);
+            Movie m2 = new Movie("Gladiator", 155m, "gladiator.jpg", "Ridley Scott", 5);
+            Movie m3 = new Movie("Forrest Gump", 142m, "forrest-gump.jpg", "Jens", 6);
             Products.Add(m1);
             Products.Add(m2);
             Products.Add(m3);
-
 
             // Customer 
             Customer c1 = new Customer("Jens", "Jensen", "Sønderhøj 30", "8230", "Åbyhøj", 1);
@@ -57,7 +56,6 @@ namespace MbmStore.Infrastructure
             Customers.Add(c3);
 
             // ORDER ITEMS
-            
             Invoice i1 = new Invoice(488, new DateTime(2017, 6, 7), c1);
             Invoice i2 = new Invoice(1163, new DateTime(2017, 6, 11), c2);
             Invoices.Add(i1);

@@ -16,7 +16,8 @@ namespace MbmStore.Models
         }
 
         // constructors
-        public Movie(string title, decimal price, string imageUrl, string director) : base(title, price, imageUrl)
+        public Movie(string title, decimal price, string imageUrl, string director, int productId) :
+            base (title, price, imageUrl, productId)
         {
             
             this.director = director;
