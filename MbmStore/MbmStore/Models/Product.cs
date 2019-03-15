@@ -11,13 +11,16 @@ namespace MbmStore.Models
        public string Title { get; set; }
        public decimal Price { get; set; }
        public string ImageUrl { get; set; }
-       public Product() { }
+       public int ProductId { get; set; }
 
-       public Product(string title, decimal price, string imageurl)
+        public Product() { }
+
+       public Product(string title, decimal price, string imageurl, int productid)
         {
             Title = title;
             Price = price;
             ImageUrl = imageurl;
+            ProductId = productid;
         }
 
 

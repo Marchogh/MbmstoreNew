@@ -17,10 +17,9 @@ namespace MbmStore.Controllers
          List<Book> books = new List<Book>();
          books = Repository.Products.OfType<Book>().ToList();
          
-         ViewBag.Products = Repository.Products;
+         // ViewBag.Products = Repository.Products;
 
-
-            return View();
+            return View(Repository.Products);
         }
     }
 }

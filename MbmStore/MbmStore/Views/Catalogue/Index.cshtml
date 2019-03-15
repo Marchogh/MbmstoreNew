@@ -1,64 +1,55 @@
 ﻿@using MbmStore.Models;
+@model IEnumerable<Product>
 
 @{
     ViewBag.Title = "Catalogue";
 }
 
 
-<h2>Books</h2>
-<div class="container">
-    <div class="row">
-        @foreach (Product product in ViewBag.Products)
-        {
-            if (product is Book)
-            {
-                Book book = (Book)product;
 
-                <div class="card product" style="width: 18rem;">
-                    <img src="/Content/Images/@book.ImageUrl" alt="@book.Title">
-                    <div class="card-body">
-                        <h5 class="card-title">@book.Title</h5>
-                        <p class="card-text">Author: @book.Author</p>
-                        <p class="card-text">Price: @String.Format("{0:0.00}", book.Price)$</p>
-                        <a href="#" class="btn btn-primary">Buy here!</a>
-                    </div>
-                </div>
-            }
-        }
+@helper RenderBook(Book book)
+{
+    <div class="col col-lg-6">
+        <div class="card product" style="width: 18rem;">
+            <img src="/Content/Images/@book.ImageUrl" alt="@book.Title">
+            <div class="card-body">
+                <h5 class="card-title">@book.Title</h5>
+                <p class="card-text">Author: @book.Author</p>
+                <p class="card-text">Price: @String.Format("{0:0.00}", book.Price)$</p>
+                @using (Html.BeginForm("AddToCart", "Cart"))
+                {
+                    @Html.Hidden("ProductId", book.ProductId)
+                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                    <input type="submit" class="btn btn-primary" value="Add to cart" />
+                }
+            </div>
+        </div>
     </div>
-</div>
+}
 
-<h2>Movies</h2>
-<div class="container">
-    <div class="row">
-        @foreach (Product product in ViewBag.Products)
-        {
-            if (product is Movie)
-            {
-                Movie movie = (Movie)product;
-                <div class="card product" style="width: 18rem;">
-                    <img src="/Content/Images/@movie.ImageUrl" alt="@movie.Title" />
-                    <div class="card-body">
-                        <strong>Title:</strong> @movie.Title<br />
-                        Director: @movie.Director<br>
-                        Price: @String.Format("{0:0.00}", movie.Price) <br /><br />
-                        <a href="#" class="btn btn-primary">Buy here!</a>
-                    </div>
-                </div>
-            }
-        }
 
+@helper RenderMovie(Movie movie)
+{
+    <div class="col col-lg-6">
+
+        <div class="card product" style="width: 18rem;">
+            <img src="/Content/Images/@movie.ImageUrl" alt="@movie.Title" />
+            <div class="card-body">
+                <strong>Title:</strong> @movie.Title<br />
+                Director: @movie.Director<br>
+                Price: @String.Format("{0:0.00}", movie.Price) <br /><br />
+                <a href="#" class="btn btn-primary">Buy here!</a>
+            </div>
+        </div>
     </div>
-</div>
+}
 
-<h2>The CDs</h2>
-<div class="container">
-    <div class="row">
-        @foreach (Product product in ViewBag.Products)
-        {
-            if (product is MusicCD)
-            {
-                MusicCD musicCD = (MusicCD)product;
+
+
+@helper RenderMusicCD(MusicCD musicCD)
+{
+    <div class="col col-lg-6">
+
         <div class="card product" style="width: 18rem;">
             <img src="/Content/Images/@musicCD.ImageUrl" alt="@musicCD.Title" />
             <div class="card-body">
@@ -78,16 +69,37 @@
                 <p><strong>Total Playing Time:</strong> @musicCD.GetPlayingTime()</p>
             </div>
         </div>
-            }
-            }
+
+    </div>
+}
 
 
-        </div>
+<h2>Books</h2>
+<div class="row">
+    @foreach (Book book in Model.OfType<Book>().ToList())
+    {
+        @RenderBook(book);
+
+    }
 </div>
 
+<h2>Movies</h2>
+<div class="row">
+    @foreach (Movie movie in Model.OfType<Movie>().ToList())
+    {
+        @RenderMovie(movie);
 
+    }
+</div>
 
+<h2>The CDs</h2>
+<div class="row">
+    @foreach (MusicCD musicCD in Model.OfType<MusicCD>().ToList())
+    {
+        @RenderMusicCD(musicCD);
 
+    }
+</div>
 
 
 
